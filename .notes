@@ -1,0 +1,45 @@
+Publisher: Marvel, DC, Valiant, etc.
+  - PK: publisher_id
+  - Name: Marvel, DC, etc.
+
+Title: this is the name of the comic book put out by the publisher (e.g., Amazing Spider-Man), including the volume number and the year of origin
+  - PK: title_id
+  - FK: publisher_id
+  - Name (Amazing Spider-Man, Uncanny X-Men, etc.)
+  - Volume
+  - Year of origin
+
+Issue: this is an individual pubished book within a title's print run, not a physical comic book and not distinguished by variant covers
+  - PK: issue_id
+  - FK: title_id
+  - Issue Number
+  - Issue title (if one exists)
+  - Printing edition (1st, 2nd, etc.)
+  - Writers & artists (handle this via Contributions tables, has many contributions)
+    - has_many :writers, class_name: contributors, contribution
+
+Variant: an idividual issue of a title, defined by its cover variant; all issues have at least one variant (i.e., the A cover) and possibly two editions (newsstand or direct)
+  - PK: variant_id
+  - FK: issue_id
+  - FK: cover_artist_id (contributor with contributor_type_id equal to CoverArtist)
+  - Variant identifier (A, B, C, etc., this is NOT the text description)
+  - FK: edition_type_id, Newsstand or Direct Edition
+  - plain language description (if it was issued for a con or a comic shop, if it's known by a name, like "Green/Platinum/Gold/Silver" covers of Spider-Man 1, "JC Penney reprint", or "Mark Jewelers insert")
+
+EditionType: newsstand or direct
+  - edition_type_id
+
+ContributionType: story writer, inker, penciler, colors, cover art, etc
+  - contribution_type_id
+  - Name
+
+Contributor: an individual writer/artist/otherwise that contributed to an issue's story and/or artwork, not specific to contribution type
+  - PK: contributor_id
+  - has and belongs to many Contributions
+
+Contribution: join table of an individual contributor's contribution to a variant/issue
+  - PK: contribution_id
+  - FK: contribution_type_id
+  - FK: contributor_id
+  - FK: issue_id
+  - FK: variant_id, if contribution_type is Cover Artist
