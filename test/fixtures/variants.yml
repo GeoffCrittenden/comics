@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  issue_id: 1
+  variant_identifier: MyString
+  variant_description: MyText
+  edition_type_id: 1
+
+two:
+  issue_id: 1
+  variant_identifier: MyString
+  variant_description: MyText
+  edition_type_id: 1

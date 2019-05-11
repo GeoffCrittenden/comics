@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title_id: 
+  publisher_id: 1
+  name: MyText
+  volume: 1
+  year_of_origin: 1
+
+two:
+  title_id: 
+  publisher_id: 1
+  name: MyText
+  volume: 1
+  year_of_origin: 1

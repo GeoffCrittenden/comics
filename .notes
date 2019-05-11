@@ -35,6 +35,11 @@ ContributionType: story writer, inker, penciler, colors, cover art, etc
 
 Contributor: an individual writer/artist/otherwise that contributed to an issue's story and/or artwork, not specific to contribution type
   - PK: contributor_id
+  - first_name
+  - last_name
+  - middle_name
+  - title
+  - suffix
   - has and belongs to many Contributions
 
 Contribution: join table of an individual contributor's contribution to a variant/issue
