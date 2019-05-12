@@ -48,3 +48,6 @@ Contribution: join table of an individual contributor's contribution to a varian
   - FK: contributor_id
   - FK: issue_id
   - FK: variant_id, if contribution_type is Cover Artist
+
+Character (hero/villain?)
+Universe
