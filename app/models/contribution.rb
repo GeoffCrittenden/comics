@@ -8,6 +8,6 @@ class Contribution < ApplicationRecord
   validates :variant_id, presence: true, if: :cover_artist?
 
   def cover_artist?
-    contribution_type_id == ContributionType.find_by(name: 'cover_art').contribution_type_id
+    contribution_type_id == ContributionType[:cover_art].contribution_type_id
   end
 end

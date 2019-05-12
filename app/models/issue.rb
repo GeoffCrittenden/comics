@@ -8,17 +8,10 @@ class Issue < ApplicationRecord
 
   validates :title_id, :issue_number, :year_of_publication, :month_of_publication, :print_edition, :age_id, presence: true
 
-  validates :issue_number,  numericality: { only_integer: true, greater_than_or_equal_to: -10 }
-  validates :print_edition, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
-
-  validates :year_of_publication, format: {
-    with:    /\A19[0-9][0-9]|200[0-9]|201[0-9]|202[0-9]\z/,
-    message: 'must be a valid year between 1900 and 2029'
-  }
-  validates :month_of_publication, format: {
-    with:    /\AJanuary|February|March|April|May|June|July|August|September|October|November|December\z/,
-    message: 'please choose from January, February, March, April, May, June, July, August, September, October, November, December'
-  }
+  validates :year_of_publication,  numericality: { only_integer: true, greater_than_or_equal_to: 1897, less_than_or_equal_to: 2029 }
+  validates :month_of_publication, numericality: { only_integer: true, greater_than_or_equal_to: 1,    less_than_or_equal_to: 12 }
+  validates :issue_number,         numericality: { only_integer: true, greater_than_or_equal_to: -10 }
+  validates :print_edition,        numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   before_validation :populate_age
 
