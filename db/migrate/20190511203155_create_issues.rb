@@ -9,6 +9,7 @@ class CreateIssues < ActiveRecord::Migration[5.2]
       t.integer :month_of_publication, comment: 'Publication month listed in the indicia'
       t.date    :date_of_publication,  comment: 'The actual date of public release, does not always match the indicia publication mon/year'
       t.integer :print_edition,        comment: 'The numbered print edition, unsually first, but popular issues have multiple print editions'
+      t.decimal :cover_price, precision: 5, scale: 2, comment: 'Cover price on the issue itself, not the purhcase price paid'
 
       t.timestamps
     end
