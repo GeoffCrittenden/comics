@@ -22,3 +22,6 @@ Comics::CONFIG.contribution_types.each { |contribution_type| ContributionType.fi
 Comics::CONFIG.titles.publishers.each do |publisher, titles|
   titles.each { |title| Title.find_or_create_by(title.merge(publisher: Publisher[publisher])) }
 end
+
+# Grades
+Comics::CONFIG.grades.each { |grade| Grade.find_or_create_by(grade) }

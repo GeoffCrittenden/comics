@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_140636) do
+ActiveRecord::Schema.define(version: 2019_05_15_024350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 2019_05_12_140636) do
     t.string "edition_type", comment: "Most commonly either newsstand or direct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "grades", primary_key: "grade_id", force: :cascade do |t|
+    t.string "grade", comment: "Numeric grade of the comic book"
+    t.string "name", comment: "Text name of the grade (e.g., Very Fine, Near Mint, Good, etc.)"
+    t.string "abbreviation", comment: "NM/MT, VG, F, etc."
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["grade"], name: "index_grades_on_grade", unique: true
   end
 
   create_table "issues", primary_key: "issue_id", force: :cascade do |t|

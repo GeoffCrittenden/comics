@@ -1,0 +1,124 @@
+-
+  grade: 10.0
+  name: Gem Mint
+  abbreviation: GM
+
+-
+  grade: 9.9
+  name: Mint
+  abbreviation: MT
+
+-
+  grade: 9.8
+  name: Near Mint/Mint
+  abbreviation: NM/MT
+
+-
+  grade: 9.6
+  name: Near Mint+
+  abbreviation: NM+
+
+-
+  grade: 9.4
+  name: Near Mint
+  abbreviation: NM
+
+-
+  grade: 9.2
+  name: Near Mint-
+  abbreviation: NM-
+
+-
+  grade: 9.0
+  name: Very Fine/Near Mint
+  abbreviation: VF/NM
+
+-
+  grade: 8.5
+  name: Very Fine+
+  abbreviation: VF+
+
+-
+  grade: 8.0
+  name: Very Fine
+  abbreviation: VF
+
+-
+  grade: 7.5
+  name: Very Fine-
+  abbreviation: VF-
+
+-
+  grade: 7.0
+  name: Fine/Very Fine
+  abbreviation: F/VF
+
+-
+  grade: 6.5
+  name: Fine+
+  abbreviation: F+
+
+-
+  grade: 6.0
+  name: Fine
+  abbreviation: F
+
+-
+  grade: 5.5
+  name: Fine-
+  abbreviation: F-
+
+-
+  grade: 5.0
+  name: Very Good/Fine
+  abbreviation: VG/F
+
+-
+  grade: 4.5
+  name: Very Good+
+  abbreviation: VG+
+
+-
+  grade: 4.0
+  name: Very Good
+  abbreviation: VG
+
+-
+  grade: 3.5
+  name: Very Good-
+  abbreviation: VG-
+
+-
+  grade: 3.0
+  name: Good/Very Good
+  abbreviation: G/VG
+
+-
+  grade: 2.5
+  name: Good+
+  abbreviation: G+
+
+-
+  grade: 2.0
+  name: Good
+  abbreviation: G
+
+-
+  grade: 1.8
+  name: Good-
+  abbreviation: G-
+
+-
+  grade: 1.5
+  name: Fair/Good
+  abbreviation: FR/GD
+
+-
+  grade: 1.0
+  name: Fair
+  abbreviation: FR
+
+-
+  grade: 0.5
+  name: Poor
+  abbreviation: PR
