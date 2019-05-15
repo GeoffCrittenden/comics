@@ -1,4 +1,33 @@
-fantastic_four:
-  publisher: Marvel
-  year_of_origin: 1961
-  volume: 1
+publishers:
+  Marvel:
+    -
+      title: Amazing Spider-Man
+      year_of_origin: 1963
+      volume: 1
+
+    -
+      title: Fantastic Four
+      year_of_origin: 1961
+      volume: 1
+
+    -
+      title: Spider-Man
+      year_of_origin: 1990
+      volume: 1
+
+    -
+      title: Uncanny X-Men
+      year_of_origin: 1963
+      volume: 1
+
+    -
+      title: Web of Spider-Man
+      year_of_origin: 1985
+      volume: 1
+
+    -
+      title: X-Men
+      year_of_origin: 1963
+      volume: 1
+
+  DC: []

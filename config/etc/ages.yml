@@ -1,0 +1,29 @@
+- 
+  name: 'Platinum'
+  start_date: '1897-01-01'
+  end_date: '1937-12-31'
+
+- 
+  name: 'Golden' 
+  start_date: '1938-01-01'
+  end_date: '1955-12-31'
+
+- 
+  name: 'Silver' 
+  start_date: '1956-01-01'
+  end_date: '1969-12-31'
+
+- 
+  name: 'Bronze' 
+  start_date: '1970-01-01'
+  end_date: '1985-12-31'
+
+- 
+  name: 'Copper' 
+  start_date: '1986-01-01'
+  end_date: '1991-12-31'
+
+- 
+  name: 'Modern' 
+  start_date: '1992-01-01'
+  end_date: nil
