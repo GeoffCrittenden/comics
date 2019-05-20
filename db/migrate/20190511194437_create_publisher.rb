@@ -4,6 +4,8 @@ class CreatePublisher < ActiveRecord::Migration[5.2]
       t.string :name,      comment: 'Universally recognized name of the publisher (e.g., Marvel or DC)'
       t.string :full_name, comment: 'Official name of the publisher'
 
+      t.index :name, unique: true
+
       t.timestamps
     end
   end

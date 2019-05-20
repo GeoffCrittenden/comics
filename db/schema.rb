@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_15_024350) do
+ActiveRecord::Schema.define(version: 2019_05_19_232028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,30 @@ ActiveRecord::Schema.define(version: 2019_05_15_024350) do
     t.date "end_date", comment: "Date that is universally accepted as the end of the age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_ages_on_name", unique: true
+    t.index ["start_date"], name: "index_ages_on_start_date", unique: true
+  end
+
+  create_table "certification_labels", primary_key: "certification_label_id", force: :cascade do |t|
+    t.integer "certification_service_id"
+    t.string "name"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "certification_services", primary_key: "certification_service_id", force: :cascade do |t|
+    t.string "name", comment: "CGC, CBCS, PGX, etc."
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_certification_services_on_name", unique: true
   end
 
   create_table "contribution_types", primary_key: "contribution_type_id", force: :cascade do |t|
     t.string "name", comment: "Writer, cover artist, penciler, inks, etc."
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_contribution_types_on_name", unique: true
   end
 
   create_table "contributions", primary_key: "contribution_id", force: :cascade do |t|
@@ -35,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_024350) do
     t.integer "issue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["contribution_type_id", "contributor_id", "issue_id"], name: "contributions__u__contribution_type_id_contributor_id_issue_id", unique: true
   end
 
   create_table "contributors", primary_key: "contributor_id", force: :cascade do |t|
@@ -51,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_024350) do
     t.string "edition_type", comment: "Most commonly either newsstand or direct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["edition_type"], name: "index_edition_types_on_edition_type", unique: true
   end
 
   create_table "grades", primary_key: "grade_id", force: :cascade do |t|
@@ -74,7 +94,14 @@ ActiveRecord::Schema.define(version: 2019_05_15_024350) do
     t.decimal "cover_price", precision: 5, scale: 2, comment: "Cover price on the issue itself, not the purhcase price paid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["title_id", "issue_number", "print_edition"], name: "issues__u__title_id_issue_number_print_edition", unique: true
+    t.index ["title_id", "issue_number", "print_edition"], name: "index_issues_on_title_id_and_issue_number_and_print_edition", unique: true
+  end
+
+  create_table "page_colors", primary_key: "page_color_id", force: :cascade do |t|
+    t.string "description", comment: "White, Off White, Off White to White, etc."
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["description"], name: "index_page_colors_on_description", unique: true
   end
 
   create_table "publishers", primary_key: "publisher_id", force: :cascade do |t|
@@ -82,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_024350) do
     t.string "full_name", comment: "Official name of the publisher"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_publishers_on_name", unique: true
   end
 
   create_table "titles", primary_key: "title_id", force: :cascade do |t|
@@ -91,6 +119,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_024350) do
     t.integer "year_of_origin", comment: "Year of the first issue within the title and volume"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["publisher_id", "title", "volume"], name: "index_titles_on_publisher_id_and_title_and_volume", unique: true
   end
 
   create_table "variants", primary_key: "variant_id", force: :cascade do |t|
@@ -103,6 +132,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_024350) do
     t.index ["issue_id", "variant_identifier", "edition_type_id"], name: "variants__u__issue_id_variant_identifier_edition_type_id", unique: true
   end
 
+  add_foreign_key "certification_labels", "certification_services", primary_key: "certification_service_id"
+  add_foreign_key "contributions", "contribution_types", primary_key: "contribution_type_id"
+  add_foreign_key "contributions", "contributors", primary_key: "contributor_id"
   add_foreign_key "issues", "ages", primary_key: "age_id"
   add_foreign_key "issues", "titles", primary_key: "title_id"
   add_foreign_key "titles", "publishers", primary_key: "publisher_id"

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  certification_service_id: 1
+  name: MyString
+  color: MyString
+
+two:
+  certification_service_id: 1
+  name: MyString
+  color: MyString

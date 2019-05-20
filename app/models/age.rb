@@ -2,6 +2,7 @@ class Age < ApplicationRecord
   has_many :issues
 
   validates :name, :start_date, presence: true
+  validates :name, :start_date, uniqueness: true
   validates :end_date, presence: true, if: Proc.new { |a| Age.pluck(:start_date).any? { |date| date > a.start_date } }
 
   scope :current, ->{ where("start_date < '#{Date.today}' AND end_date IS NULL").first }

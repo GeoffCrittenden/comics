@@ -11,6 +11,8 @@ class CreateIssues < ActiveRecord::Migration[5.2]
       t.integer :print_edition,        comment: 'The numbered print edition, unsually first, but popular issues have multiple print editions'
       t.decimal :cover_price, precision: 5, scale: 2, comment: 'Cover price on the issue itself, not the purhcase price paid'
 
+      t.index %i[title_id issue_number print_edition], unique: true
+
       t.timestamps
     end
 

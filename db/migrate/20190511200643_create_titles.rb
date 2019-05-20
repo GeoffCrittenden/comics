@@ -6,6 +6,8 @@ class CreateTitles < ActiveRecord::Migration[5.2]
       t.integer :volume,         comment: 'Vol. 1, Vol. 2, etc.'
       t.integer :year_of_origin, comment: 'Year of the first issue within the title and volume'
 
+      t.index %i[publisher_id title volume], unique: true
+
       t.timestamps
     end
 

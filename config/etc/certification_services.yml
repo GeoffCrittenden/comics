@@ -1,0 +1,43 @@
+CGC:
+  labels:
+    -
+      name: Universal
+      color: blue
+
+    -
+      name: Signature Series
+      color: yellow
+
+    -
+      name: Qualified
+      color: green
+
+    -
+      name: Restored
+      color: purple
+
+    -
+      name: No Grade
+      color: ~
+
+    -
+      name: Conserved
+      color: grey
+
+    -
+      name: Signature Series Qualified
+      color: yellow/green
+
+    -
+      name: Signature Series Restored
+      color: yellow/purple
+
+    -
+      name: Signature Series Conserved
+      color: yellow/grey
+
+CBCS:
+  labels: []
+
+PGX:
+  labels: []

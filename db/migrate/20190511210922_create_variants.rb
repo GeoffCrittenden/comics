@@ -11,5 +11,7 @@ class CreateVariants < ActiveRecord::Migration[5.2]
 
     add_foreign_key :variants, :issues,        primary_key: :issue_id
     add_foreign_key :variants, :edition_types, primary_key: :edition_type_id
+
+    execute "CREATE UNIQUE INDEX variants__u__issue_id_variant_identifier_edition_type_id ON variants (issue_id, variant_identifier, edition_type_id)"
   end
 end

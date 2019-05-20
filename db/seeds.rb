@@ -25,3 +25,12 @@ end
 
 # Grades
 Comics::CONFIG.grades.each { |grade| Grade.find_or_create_by(grade) }
+
+# Certification Services and their Certification Labels
+Comics::CONFIG.certification_services.each do |name, service_info|
+  svc = CertificationService.find_or_create_by(name: name)
+  service_info.labels.each { |label| CertificationLabel.find_or_create_by(label.merge(certification_service: svc)) }
+end
+
+# Page Colors
+Comics::CONFIG.page_colors.each { |page_color| PageColor.find_or_create_by(page_color) }
