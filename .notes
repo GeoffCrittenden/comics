@@ -75,6 +75,7 @@ Certifications
   - fk: certification_label_id
   - grader_notes
   - description
+  - cbcs_checkmark?
 
 ComicBook
   - pk: comic_book_id

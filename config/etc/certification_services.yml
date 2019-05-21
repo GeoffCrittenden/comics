@@ -37,7 +37,37 @@ CGC:
       color: yellow/grey
 
 CBCS:
-  labels: []
+  labels:
+    -
+      name: Graded
+      color: blue
+
+    -
+      name: Authentic Signature
+      color: yellow
+
+    -
+      name: Verified Signature
+      color: red
+
+    -
+      name: Original Art
+      color: yellow
+
+    -
+      name: Raw Grade
+      color: ~
 
 PGX:
-  labels: []
+  labels:
+    -
+      name: World
+      color: blue
+
+    -
+      name: Signature
+      color: gold
+
+    -
+      name: Restored
+      color: green
