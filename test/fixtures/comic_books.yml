@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  variant_id: 1
+  certification_id: 1
+  purchase_id: 1
+  sale_id: 1
+
+two:
+  variant_id: 1
+  certification_id: 1
+  purchase_id: 1
+  sale_id: 1

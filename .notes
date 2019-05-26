@@ -64,8 +64,6 @@ Certification Label (universal, signature series, restored, qualified, etc)
   - name (universal, graded, )
   - color
 
-####################################################
-
 Certifications
   - pk: certification_id
   - fk: comic_book_id
@@ -77,10 +75,38 @@ Certifications
   - description
   - cbcs_checkmark?
 
+Seller
+  - pk: seller_id
+  - name
+  - proprietor
+  - address
+  - website
+
+PurchaseType
+  - retail, direct, auction, offer, convention, raffle
+
+Purchase
+  - pk: purchase_id
+  - fk: seller_id
+  - fk: purchase_type_id
+  - date
+  - location
+  - online?
+  - price
+  - shipping_cost
+  - notes
+
+####################################################
+
 ComicBook
   - pk: comic_book_id
   - fk: variant_id
   - fk: certification_id
+  - fk: purchase_id
+  - fk: sale_id
+
+Buyer
+Sale
 
 Universe
 Character (hero/villain?)

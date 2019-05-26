@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_232028) do
+ActiveRecord::Schema.define(version: 2019_05_26_211055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,28 @@ ActiveRecord::Schema.define(version: 2019_05_19_232028) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_certification_services_on_name", unique: true
+  end
+
+  create_table "certifications", primary_key: "certification_id", force: :cascade do |t|
+    t.integer "comic_book_id"
+    t.integer "certification_service_id"
+    t.integer "grade_id"
+    t.integer "certification_label_id"
+    t.integer "page_color_id"
+    t.text "description", comment: "Anything noteworthy (i.e., first appearance, death of character, etc.)"
+    t.text "grader_notes", comment: "explanatory notes justifying grade given"
+    t.boolean "cbcs_checkmark", comment: "applies to CBCS only, used to denote a book that presents better than its grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comic_books", primary_key: "comic_book_id", force: :cascade do |t|
+    t.integer "variant_id"
+    t.integer "certification_id"
+    t.integer "purchase_id"
+    t.integer "sale_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contribution_types", primary_key: "contribution_type_id", force: :cascade do |t|
@@ -112,6 +134,35 @@ ActiveRecord::Schema.define(version: 2019_05_19_232028) do
     t.index ["name"], name: "index_publishers_on_name", unique: true
   end
 
+  create_table "purchase_types", primary_key: "purchase_type_id", force: :cascade do |t|
+    t.string "name", comment: "unique name, e.g., retail, convention, auction, etc."
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_purchase_types_on_name", unique: true
+  end
+
+  create_table "purchases", primary_key: "purchase_id", force: :cascade do |t|
+    t.integer "seller_id"
+    t.integer "purchase_type_id"
+    t.date "date", comment: "date of purchase"
+    t.text "location", comment: "location of purchase, if different from seller address or website"
+    t.boolean "online", comment: "if purchased online or not"
+    t.decimal "price", precision: 5, scale: 2, comment: "price paid minus shipping costs"
+    t.decimal "shipping_cost", precision: 5, scale: 2, comment: "cost to ship purchase, if applicable"
+    t.text "notes", comment: "any other relevant info about the purcahse"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sellers", primary_key: "seller_id", force: :cascade do |t|
+    t.string "name", comment: "business name"
+    t.string "proprietor", comment: "full name of business owner, if applicable"
+    t.text "address", comment: "street address of business, if applicable"
+    t.string "website", comment: "online presence"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "titles", primary_key: "title_id", force: :cascade do |t|
     t.integer "publisher_id"
     t.text "title", comment: "Offical title of print run from indicia"
@@ -133,10 +184,20 @@ ActiveRecord::Schema.define(version: 2019_05_19_232028) do
   end
 
   add_foreign_key "certification_labels", "certification_services", primary_key: "certification_service_id"
+  add_foreign_key "certifications", "certification_labels", primary_key: "certification_label_id"
+  add_foreign_key "certifications", "certification_services", primary_key: "certification_service_id"
+  add_foreign_key "certifications", "comic_books", primary_key: "comic_book_id"
+  add_foreign_key "certifications", "grades", primary_key: "grade_id"
+  add_foreign_key "certifications", "page_colors", primary_key: "page_color_id"
+  add_foreign_key "comic_books", "certifications", primary_key: "certification_id"
+  add_foreign_key "comic_books", "purchases", primary_key: "purchase_id"
+  add_foreign_key "comic_books", "variants", primary_key: "variant_id"
   add_foreign_key "contributions", "contribution_types", primary_key: "contribution_type_id"
   add_foreign_key "contributions", "contributors", primary_key: "contributor_id"
   add_foreign_key "issues", "ages", primary_key: "age_id"
   add_foreign_key "issues", "titles", primary_key: "title_id"
+  add_foreign_key "purchases", "purchase_types", primary_key: "purchase_type_id"
+  add_foreign_key "purchases", "sellers", primary_key: "seller_id"
   add_foreign_key "titles", "publishers", primary_key: "publisher_id"
   add_foreign_key "variants", "edition_types", primary_key: "edition_type_id"
   add_foreign_key "variants", "issues", primary_key: "issue_id"

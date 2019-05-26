@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  comic_book_id: 1
+  certification_service_id: 1
+  grade_id: 1
+  page_color_id: 1
+  certification_label_id: 1
+  description: MyText
+  grader_notes: MyText
+  cbcs_checkmark: false
+
+two:
+  comic_book_id: 1
+  certification_service_id: 1
+  grade_id: 1
+  page_color_id: 1
+  certification_label_id: 1
+  description: MyText
+  grader_notes: MyText
+  cbcs_checkmark: false
