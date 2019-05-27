@@ -12,6 +12,6 @@ class Age < ApplicationRecord
       current
     else
       first("start_date <= '#{issue_date}' AND end_date <= '#{issue_date}'")
-    end.age_id
+    end
   end
 end

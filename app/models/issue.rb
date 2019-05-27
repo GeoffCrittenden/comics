@@ -19,7 +19,7 @@ class Issue < ApplicationRecord
     return if age_id?
     if date_of_publication? || (month_of_publication? && year_of_publication?)
       date = date_of_publication || "#{month_of_publication} #{year_of_publication}".to_date
-      self.age_id = Age.determine_age_for_issue_date(date)
+      self.age_id = Age.determine_age_for_issue_date(date).age_id
     end
   end
 end

@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_211055) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["certification_service_id", "name"], name: "index_certification_labels_on_certification_service_id_and_name", unique: true
   end
 
   create_table "certification_services", primary_key: "certification_service_id", force: :cascade do |t|
@@ -101,7 +102,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_211055) do
     t.string "abbreviation", comment: "NM/MT, VG, F, etc."
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["grade"], name: "index_grades_on_grade", unique: true
+    t.index ["grade", "name", "abbreviation"], name: "index_grades_on_grade_and_name_and_abbreviation", unique: true
   end
 
   create_table "issues", primary_key: "issue_id", force: :cascade do |t|
@@ -147,7 +148,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_211055) do
     t.date "date", comment: "date of purchase"
     t.text "location", comment: "location of purchase, if different from seller address or website"
     t.boolean "online", comment: "if purchased online or not"
-    t.decimal "price", precision: 5, scale: 2, comment: "price paid minus shipping costs"
+    t.decimal "price", precision: 7, scale: 2, comment: "price paid minus shipping costs"
     t.decimal "shipping_cost", precision: 5, scale: 2, comment: "cost to ship purchase, if applicable"
     t.text "notes", comment: "any other relevant info about the purcahse"
     t.datetime "created_at", null: false
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(version: 2019_05_26_211055) do
     t.string "website", comment: "online presence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_sellers_on_name", unique: true
   end
 
   create_table "titles", primary_key: "title_id", force: :cascade do |t|

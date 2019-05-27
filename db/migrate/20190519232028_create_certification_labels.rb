@@ -5,6 +5,8 @@ class CreateCertificationLabels < ActiveRecord::Migration[5.2]
       t.string  :name
       t.string  :color
 
+      t.index %i[certification_service_id name], unique: true
+
       t.timestamps
     end
 

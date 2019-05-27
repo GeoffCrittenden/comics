@@ -4,4 +4,5 @@ class CertificationService < ApplicationRecord
   alias_method :labels, :certification_labels
 
   validates :name, presence: true
+  validates :name, uniqueness: { case_sensitive: false }
 end
